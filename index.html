@@ -10,37 +10,38 @@
 </head>
 
   <body>
-    <h1 class="form-title">Compare The Market</h1>
-    <div class="form-board">
-        <div id="step-1">
-            <form class="form-board__form">
+    <h1 class="title">Compare The Market</h1>
+    <div class="form">
+        <form class="form__body">
+            <div class="form--stage display" id="stepOne">
                 <h2>Personal Details Part-1</h2>
                 <fieldset>                
-                    <input type="text" name="firstName" placeholder="First Name" required><br>
-                    <input type="text" name="lastName" placeholder="Last Name" required><br>
+                    <input type="text" id="fname" name="fname" placeholder="First Name" required><br>
+                    <input type="text" name="lname" placeholder="Last Name" required><br>
                     <input type="email" name="email" placeholder="Email" required><br>
                     <input type="tel" name="phone" placeholder="Phone"><br>
                 </fieldset>
-                <button type="submit">next</button>            
-            </form>
-        </div>
-        <div id="step-2">
-            <form class="form-board__form">
+                <button class="btn--next" type="button" onclick="handlePage(1)">Next</button>  
+            </div>
+            <div class="form--stage " id="stepTwo">
                 <h2>STEP 2</h2>
-                <input type="number" name="streetNumber" placeholder="Street number" required><br>
-                <input type="text" name="streetName" placeholder="Street name" required>
-                <select id="streetType" name="streetType">
-                    <option value="cl">Cl</option>
-                    <option value="ct">Ct</option>
-                    <option value="st">St</option>
-                    <option value="Pl">pl</option>
-                    <option value="ave">Ave</option>
-                  </select><br>
-                <input type="text" name="suburb" placeholder="Suburb"><br>
-                <input type="number" name="postcode" placeholder="Postcode"><br>
-                <button type="submit">submit</button>
-            </form>
-        </div>
+                <fieldset>
+                    <input type="number" name="snumber" placeholder="Street number" required><br>
+                    <input type="text" name="sname" placeholder="Street name" required>
+                    <select id="stype" name="stype" required>
+                        <option value="cl">Cl</option>
+                        <option value="ct">Ct</option>
+                        <option value="st">St</option>
+                        <option value="Pl">pl</option>
+                        <option value="ave">Ave</option>
+                        </select><br>
+                    <input type="text" name="suburb" placeholder="Suburb" required><br>
+                    <input type="number" name="postcode" placeholder="Postcode" min='0800' max="7999" required><br>
+                </fieldset>
+                <button class="btn--prev" type="Previous" onclick="handlePage(-1)">Previous</button>  
+                <button class="btn--submit" type="submit">Submit</button>
+            </div>
+        </form>
     </div>
     <script src="script.js" defer></script>
   </body>
