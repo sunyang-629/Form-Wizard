@@ -1,17 +1,17 @@
 let completedSteps = 0;
 let remainingSteps = 2;
 let currentPage = 1; 
-const personalDetails = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    streetNumber: "",
-    streetName: "",
-    streetType: "",
-    suburb: "",
-    postcode: "",
-} 
+// const personalDetails = {
+//     firstName: "",
+//     lastName: "",
+//     email: "",
+//     phone: "",
+//     streetNumber: "",
+//     streetName: "",
+//     streetType: "",
+//     suburb: "",
+//     postcode: "",
+// } 
 
 const $$ = id => document.getElementById(id);
 const $ = className => document.getElementsByClassName(className);
@@ -22,7 +22,7 @@ const handlePage = n => {
         completedSteps += n;
         $('form--stage')[completedSteps].className += 'display';
     } else {
-        alert('wrong')
+        console.log('object');
     }
 }
 
@@ -32,24 +32,41 @@ const validator = () => {
         if (inputs[i].required && checkIsEmpty(inputs[i].value)) {
             return false;
         }
-        // else if (!checkFormatValid(inputs[i])) return false    
+        else if (!checkFormatValid(inputs[i])) {
+            return false
+        }     
     }
     return true;
 }
 
 const checkIsEmpty = value => {
-    if (value.trim() === '') return true
+    if (value.trim() === '') {
+        return true
+    } return false
 }
 
-// const checkFormatValid = input => {
-//     switch (input.name) {
-//         case 'email':
-//             console.log(checkEmailValid(input.value)); 
-//             return checkEmailValid(input.value)
-//     }
-// }
+const checkFormatValid = input => {
+    switch (input.name) {
+        case 'email':
+            return checkEmailValid(input.value)
+        case 'postcode':
+            return checkPostcodeValid(parseInt(input.value,10))
+        default:
+            return true;
+    }
+}
 
-// const checkEmailValid = value => {
-//     const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-//     return emailFormat.test(value);
-// }
+const checkEmailValid = value => {
+    const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailFormat.test(value);
+}
+
+const checkPostcodeValid = value => {
+    return (value >= 800 && value <= 7999)
+}
+
+const results = () => {
+    const firstName = $$('fname').value;
+
+    document.write('<h2>First Name: ' + firstName);
+}
