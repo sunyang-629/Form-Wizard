@@ -22,10 +22,17 @@ body {
 .form-board__form input {
     padding:15px;
     margin-bottom: 25px;
+    width: 61.8%;
 }
 
 .form-board__form fieldset {
     border: none;
+}
+
+.form-board__form button {
+    padding:0;
+    height: 50px;
+    width:62%
 }
 
 #step-2{
