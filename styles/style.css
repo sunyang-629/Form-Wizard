@@ -1,0 +1,33 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    height: 600px;
+    background-image: url('https://www.comparethemarket.com.au/wp-content/uploads/2020/02/long-walk-home-cliff-hanger.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-board{
+    width: 61.8%;
+    background-color: rgba(28,62,148,.8);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.form-board__form{
+    height: 450px;
+}
+
+.form-board__form input {
+    padding:15px;
+    margin-bottom: 25px;
+}
+
+.form-board__form fieldset {
+    border: none;
+}
+
+#step-2{
+    display: none;
+}

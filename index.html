@@ -6,25 +6,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Form Wizard</title>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="css/style1.css" />
-  </head>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+</head>
 
   <body>
-    <h1 class="game-title">Form Wizard</h1>
-    <div class="game-stats">
-      <button class="game-stats__button" type="button">START</button>
-    </div>
-    <div class="game-board">
-      <div class="game-instruction">
-        <h3 class="game-instruction__header">Instruction</h3>
-        <p class="game-instruction__content">
-          - Click on the card to view the back face of the card. <br />
-          - Get two exact same card to score.<br />- Score are based on the time
-          and level. <br />- You only have 60s for each level. <br />- There are
-          three levels, '2x2', '4x4' and '6x6'. <br />- Press 'Start Game'
-          button when you are ready.
-        </p>
-      </div>
+    <h1 class="form-title">Compare The Market</h1>
+    <div class="form-board">
+        <div id="step-1">
+            <form class="form-board__form">
+                <h2>Personal Details Part-1</h2>
+                <fieldset>                
+                    <input type="text" name="firstName" placeholder="First Name" required><br>
+                    <input type="text" name="lastName" placeholder="Last Name" required><br>
+                    <input type="email" name="email" placeholder="Email" required><br>
+                    <input type="tel" name="phone" placeholder="Phone"><br>
+                </fieldset>
+                <button type="submit">next</button>            
+            </form>
+        </div>
+        <div id="step-2">
+            <form class="form-board__form">
+                <h2>STEP 2</h2>
+                <input type="number" name="streetNumber" placeholder="Street number" required><br>
+                <input type="text" name="streetName" placeholder="Street name" required>
+                <select id="streetType" name="streetType">
+                    <option value="cl">Cl</option>
+                    <option value="ct">Ct</option>
+                    <option value="st">St</option>
+                    <option value="Pl">pl</option>
+                    <option value="ave">Ave</option>
+                  </select><br>
+                <input type="text" name="suburb" placeholder="Suburb"><br>
+                <input type="number" name="postcode" placeholder="Postcode"><br>
+                <button type="submit">submit</button>
+            </form>
+        </div>
     </div>
   </body>
 </html>
