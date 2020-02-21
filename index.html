@@ -15,31 +15,31 @@
     </div>
     <div class="form">
         <!-- <form class="form__body"  action='/result.html'> -->
-        <form class="form__body"  onsubmit="return results()">
+        <form class="form__body"  onsubmit="return validator() && results()">
             <div class="form--stage display" id="stepOne">
                 <h2>Personal Details Part-1</h2>
                 <fieldset>
-                    <input type="text" id="fname" name="fname" placeholder="First Name" required ><br>
-                    <input type="text" name="lname" placeholder="Last Name" required><br>
-                    <input type="email" name="email" placeholder="Email" required><br>
-                    <input type="tel" name="phone" placeholder="Phone(eg:0712345678)"><br>
+                    <input type="text" id="firstName" name="fname" placeholder="First Name *" required ><br>
+                    <input type="text" id="lastName" name="lname" placeholder="Last Name *" required><br>
+                    <input type="email" id="email" class="detail" name="email" placeholder="Email *" required><br>
+                    <input type="tel" id='phone' class="detail" name="phone" placeholder="Phone(eg:0712345678)"><br>
                 </fieldset>
                 <button class="btn--next" type="button" onclick="handlePage(1)">Next</button>  
             </div>
             <div class="form--stage " id="stepTwo">
-                <h2>STEP 2</h2>
+                <h2>Personal Details Part-2</h2>
                 <fieldset>
-                    <input type="text" name="snumber" placeholder="Street number" required><br>
-                    <input type="text" name="sname" placeholder="Street name" required>
-                    <select id="stype" name="stype" required>
+                    <input type="text" id="streetNumber" name="snumber" placeholder="Street number" required><br>
+                    <input type="text" id="streetName" name="sname" placeholder="Street name" required>
+                    <select class="detail" id="streetType" name="stype" required>
                         <option value="cl">Cl</option>
                         <option value="ct">Ct</option>
                         <option value="st">St</option>
-                        <option value="Pl">Pl</option>
+                        <option value="pl">Pl</option>
                         <option value="ave">Ave</option>
                         </select><br>
-                    <input type="text" name="suburb" placeholder="Suburb" required><br>
-                    <input type="text" name="postcode" placeholder="Postcode" required><br>
+                    <input type="text" id="suburb" name="suburb" placeholder="Suburb" required><br>
+                    <input type="text" id="postcode" class="detail" name="postcode" placeholder="Postcode" required><br>
                 </fieldset>
                 <button class="btn--prev" type="button" onclick="handlePage(-1)">Previous</button>  
                 <button class="btn--submit" type="submit">Submit</button>

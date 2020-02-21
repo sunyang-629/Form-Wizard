@@ -1,17 +1,8 @@
 let completedSteps = 0;
 let remainingSteps = 2;
 let currentPage = 1; 
-// const personalDetails = {
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     phone: "",
-//     streetNumber: "",
-//     streetName: "",
-//     streetType: "",
-//     suburb: "",
-//     postcode: "",
-// } 
+const personalDetails = {};
+
 
 const $$ = id => document.getElementById(id);
 const $ = className => document.getElementsByClassName(className);
@@ -81,10 +72,27 @@ const checkPositiveIntegerValid = value => {
 }
 
 const results = () => {
-    if (validator()) {
-    const firstName = $$('fname').value;
+    collectDetails();
+    writeResults();
+}
 
-    document.write('<h2>First Name: ' + firstName);
-    }
+const collectDetails = () => {
+    personalDetails.firstName = $$('firstName').value;
+    personalDetails.lastName = $$('lastName').value;
+    personalDetails.email = $$('email').value;
+    personalDetails.phone = $$('phone').value;
+    personalDetails.streetNumber = $$('streetNumber').value;
+    personalDetails.streetName = $$('streetName').value;
+    personalDetails.streetType = $$('streetType').value;
+    personalDetails.suburb = $$('suburb').value;
+    personalDetails.postcode = $$('postcode').value;
+    console.log(personalDetails);
+}
+
+const writeResults = () => {
+    document.write('<h2>fullName: ' + personalDetails.firstName + ' ' + personalDetails.lastName + '</h2>')
+    document.write('<h2>email: ' + personalDetails.email + '</h2>')
+    document.write('<h2>phone: ' + (personalDetails.phone || 'not given') + '</h2>')
+    document.write('<h2>address: ' + personalDetails.streetNumber + ' ' + personalDetails.streetName + ' ' + personalDetails.streetType + ' ' + personalDetails.suburb + ' ' + personalDetails.postcode + '</h2>')
 
 }
