@@ -87,11 +87,21 @@ input{
 
 .form__body input {
     padding:15px;
-    margin-bottom: 25px;
     width: 100%;
     box-sizing: border-box;
     border: none;
     border-color:solid 1px #20619C;
+    /* margin-bottom: 25px; */
+}
+
+.form__body .input{
+    margin-bottom: 25px;
+    height: 48px;
+}
+
+.form__body .error{
+    color:red;
+    float: left;
 }
 
 .form__body select {
@@ -99,7 +109,8 @@ input{
     height: 48px;
     padding-left: 20px;
     float: right;
-    border:none
+    border:none;
+    /* margin-bottom:25px; */
 }
 
 .form__body fieldset {
@@ -151,7 +162,7 @@ input{
     border:1px solid red !important
 }
 
-#streetName{
+#streetName-input{
     width: 61.8%;
     float: left;
 }

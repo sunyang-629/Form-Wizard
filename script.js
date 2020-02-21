@@ -21,27 +21,29 @@ const handlePage = n => {
 
 const validator = () => {
     const inputs = $('form--stage')[completedSteps].getElementsByTagName('input');
+    deleteAllErrorSpans();
     for (let i = 0; i < inputs.length; i++){
-        if (inputs[i].required && checkIsEmpty(inputs[i].value)) {
-            message = inputs[i].name + ' is necessary';
+        if (inputs[i].required && checkIsEmpty(inputs[i].name,inputs[i].value)) {
             addClassName(inputs[i], ' invalid');
+            addMessageToInput(inputs[i], message);
             return false;
         }
         else if (!checkFormatValid(inputs[i])) {
-            console.log(inputs[i].name);
             message = inputs[i].name + ' is invalid';
             addClassName(inputs[i], ' invalid');
             return false
         }
         else {
             removeClassName(inputs[i], ' invalid')
+            // removeMessageFromInput(inputs[i])
         }
     }
     return true;
 }
 
-const checkIsEmpty = value => {
+const checkIsEmpty = (name,value) => {
     if (value.trim() === '') {
+        message = name + ' is necessary'
         return true
     } return false
 }
@@ -86,15 +88,15 @@ const results = () => {
 }
 
 const collectDetails = () => {
-    personalDetails.firstName = $$('firstName').value;
-    personalDetails.lastName = $$('lastName').value;
-    personalDetails.email = $$('email').value;
-    personalDetails.phone = $$('phone').value;
-    personalDetails.streetNumber = $$('streetNumber').value;
-    personalDetails.streetName = $$('streetName').value;
-    personalDetails.streetType = $$('streetType').value;
-    personalDetails.suburb = $$('suburb').value;
-    personalDetails.postcode = $$('postcode').value;
+    personalDetails.firstName = $$('firstName-input').value;
+    personalDetails.lastName = $$('lastName-input').value;
+    personalDetails.email = $$('email-input').value;
+    personalDetails.phone = $$('phone-input').value;
+    personalDetails.streetNumber = $$('streetNumber-input').value;
+    personalDetails.streetName = $$('streetName-input').value;
+    personalDetails.streetType = $$('streetType-input').value;
+    personalDetails.suburb = $$('suburb-input').value;
+    personalDetails.postcode = $$('postcode-input').value;
     console.log(personalDetails);
 }
 
@@ -120,6 +122,19 @@ const removeClassName = (ele, className) => {
     ele.className = ele.className.replace(className, '');
 }
 
+const addMessageToInput = (ele, message) => {
+    const span = document.createElement('SPAN'); 
+    const error = document.createTextNode(message);
+    span.appendChild(error);
+    addClassName(span, 'error');
+    ele.parentNode.insertBefore(span, ele);
+}
+
+const deleteAllErrorSpans = () => {
+    document.querySelectorAll('.error').forEach(error => {
+        error.remove()
+    })
+}
 // const initialPage = () => {
 //     setProgressBar(completedSteps)
 // }
