@@ -59,8 +59,13 @@ const checkFormatValid = input => {
         case 'street-number':
             return !isNaN(input.value) && checkPositiveIntegerValid(parseFloat(input.value))
         default:
-            return true;
+            return !checkMultipleSpace(input.value);
     }
+}
+
+const checkMultipleSpace = value => {
+    const multipleSpace = /\s{2}/;
+    return multipleSpace.test(value);
 }
 
 const checkEmailValid = value => {
@@ -69,7 +74,8 @@ const checkEmailValid = value => {
 }
 
 const checkPostcodeValid = value => {
-    return (value >= 800 && value <= 7999)
+    const postcodeFormat = /^(0[8][0-9]{2})$|(^[1-7][0-9]{3})$/;
+    return postcodeFormat.test(value);
 }
 
 const checkPhoneValid = value => {
