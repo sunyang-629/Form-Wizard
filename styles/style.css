@@ -27,6 +27,44 @@ input{
     min-width: 500px;
 }
 
+.form__progress{
+    width: 100%;
+    box-shadow: 0 2px 4px 0 #dddbdb;
+    /* background-color: #F3F3F3; */
+    line-height: 100%;
+    border: none;
+    border-bottom:solid 3px #dddbdb;
+}
+
+.form__progress progress{
+    width: 100%;
+    border: none;
+    /* background-color: #F3F3F3; */
+}
+
+.form__progress progress[value]{
+    background-color:#F3F3F3;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+}
+
+.form__progress progress[value]::-webkit-progress-bar{
+    background-color:#F3F3F3;
+}
+
+.form__progress progress[value]::-webkit-progress-value{
+    background-color:#cfefc2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form__progress progress[value]::-moz-progress-bar{
+    background-color:#cfefc2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
 .form--stage {
     padding-top:20px;
 }

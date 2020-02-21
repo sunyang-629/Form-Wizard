@@ -1,7 +1,9 @@
 let completedSteps = 0;
 let remainingSteps = 2;
 let currentPage = 1; 
+const totalSteps = 2;
 const personalDetails = {};
+// const progress = completedSteps / (completedSteps + remainingSteps);
 
 
 const $$ = id => document.getElementById(id);
@@ -12,6 +14,7 @@ const handlePage = n => {
         $('form--stage')[completedSteps].className = $('form--stage')[completedSteps].className.replace(' display', '');
         completedSteps += n;
         $('form--stage')[completedSteps].className += ' display';
+        setProgressBar(completedSteps)
     } else {
         console.log('object');
     }
@@ -96,3 +99,15 @@ const writeResults = () => {
     document.write('<h2>address: ' + personalDetails.streetNumber + ' ' + personalDetails.streetName + ' ' + personalDetails.streetType + ' ' + personalDetails.suburb + ' ' + personalDetails.postcode + '</h2>')
 
 }
+
+const setProgressBar = step => {
+    const progress = step / totalSteps;
+    $$('progress').value = progress * 100
+    $$('progress').innerHTML = progress * 100 + "%"
+}
+
+// const initialPage = () => {
+//     setProgressBar(completedSteps)
+// }
+
+// initialPage();
