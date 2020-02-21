@@ -25,17 +25,17 @@ const validator = () => {
     for (let i = 0; i < inputs.length; i++){
         if (inputs[i].required && checkIsEmpty(inputs[i].name,inputs[i].value)) {
             addClassName(inputs[i], ' invalid');
-            addMessageToInput(inputs[i], message);
+            addMessageToInput(inputs[i].name, message);
             return false;
         }
         else if (!checkFormatValid(inputs[i])) {
             message = inputs[i].name + ' is invalid';
+            addMessageToInput(inputs[i].name, message);
             addClassName(inputs[i], ' invalid');
             return false
         }
         else {
             removeClassName(inputs[i], ' invalid')
-            // removeMessageFromInput(inputs[i])
         }
     }
     return true;
@@ -56,7 +56,7 @@ const checkFormatValid = input => {
             return !isNaN(input.value) && checkPostcodeValid(parseInt(input.value, 10))
         case 'phone':
             return checkPhoneValid(input.value)
-        case 'snumber':
+        case 'street-number':
             return !isNaN(input.value) && checkPositiveIntegerValid(parseFloat(input.value))
         default:
             return true;
@@ -115,19 +115,22 @@ const setProgressBar = step => {
 }
 
 const addClassName = (ele, className) => {
-    ele.className += className;
+    if (ele.className.indexOf(className) === -1) {
+        ele.className += className;
+    }
 }
 
 const removeClassName = (ele, className) => {
     ele.className = ele.className.replace(className, '');
 }
 
-const addMessageToInput = (ele, message) => {
+const addMessageToInput = (name, message) => {
     const span = document.createElement('SPAN'); 
     const error = document.createTextNode(message);
+    const ele = $$(name)
     span.appendChild(error);
     addClassName(span, 'error');
-    ele.parentNode.insertBefore(span, ele);
+    ele.appendChild(span)
 }
 
 const deleteAllErrorSpans = () => {
