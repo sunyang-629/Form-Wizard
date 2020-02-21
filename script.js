@@ -3,20 +3,19 @@ let remainingSteps = 2;
 let currentPage = 1; 
 const totalSteps = 2;
 const personalDetails = {};
-// const progress = completedSteps / (completedSteps + remainingSteps);
-
+let message = '';
 
 const $$ = id => document.getElementById(id);
 const $ = className => document.getElementsByClassName(className);
 
 const handlePage = n => {
     if (validator()) {
-        $('form--stage')[completedSteps].className = $('form--stage')[completedSteps].className.replace(' display', '');
+        removeClassName($('form--stage')[completedSteps],' display')
         completedSteps += n;
-        $('form--stage')[completedSteps].className += ' display';
+        addClassName($('form--stage')[completedSteps],' display')
         setProgressBar(completedSteps)
     } else {
-        console.log('object');
+        console.log(message);
     }
 }
 
@@ -24,12 +23,19 @@ const validator = () => {
     const inputs = $('form--stage')[completedSteps].getElementsByTagName('input');
     for (let i = 0; i < inputs.length; i++){
         if (inputs[i].required && checkIsEmpty(inputs[i].value)) {
+            message = inputs[i].name + ' is necessary';
+            addClassName(inputs[i], ' invalid');
             return false;
         }
         else if (!checkFormatValid(inputs[i])) {
             console.log(inputs[i].name);
+            message = inputs[i].name + ' is invalid';
+            addClassName(inputs[i], ' invalid');
             return false
-        }     
+        }
+        else {
+            removeClassName(inputs[i], ' invalid')
+        }
     }
     return true;
 }
@@ -104,6 +110,14 @@ const setProgressBar = step => {
     const progress = step / totalSteps;
     $$('progress').value = progress * 100 || 2
     $$('progress').innerHTML = progress * 100 + "%"
+}
+
+const addClassName = (ele, className) => {
+    ele.className += className;
+}
+
+const removeClassName = (ele, className) => {
+    ele.className = ele.className.replace(className, '');
 }
 
 // const initialPage = () => {

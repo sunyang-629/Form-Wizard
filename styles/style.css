@@ -108,6 +108,16 @@ input{
     padding: 0;
 }
 
+.form__body button{
+    background-color: #FFFFFF;
+    border: 2px solid #20619c;
+}
+
+.form__body button:hover {
+    background-color: #B3DADA;
+    cursor: pointer;
+}
+
 .form__body .btn--next {
     padding:0;
     height: 50px;
@@ -135,6 +145,10 @@ input{
 
 .display{
     display: block;
+}
+
+.invalid{
+    border:1px solid red !important
 }
 
 #streetName{
