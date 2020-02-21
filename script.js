@@ -1,6 +1,6 @@
 let completedSteps = 0;
-let remainingSteps = 2;
-let currentPage = 1; 
+// let remainingSteps = 2;
+// let currentPage = 1; 
 const totalSteps = 2;
 const personalDetails = {};
 let message = '';
@@ -19,7 +19,7 @@ const handlePage = n => {
     }
 }
 
-const validator = () => {
+const validator = (e) => {
     const inputs = $('form--stage')[completedSteps].getElementsByTagName('input');
     deleteAllErrorSpans();
     for (let i = 0; i < inputs.length; i++){
@@ -32,6 +32,7 @@ const validator = () => {
             message = inputs[i].name + ' is invalid';
             addMessageToInput(inputs[i].name, message);
             addClassName(inputs[i], ' invalid');
+            e.preventDefault();
             return false
         }
         else {
@@ -144,8 +145,16 @@ const deleteAllErrorSpans = () => {
         error.remove()
     })
 }
-// const initialPage = () => {
-//     setProgressBar(completedSteps)
-// }
 
-// initialPage();
+document.querySelectorAll('.field').forEach(field => {
+    field.addEventListener('focus', e => validator(e));
+    field.addEventListener('input', e => validator(e));
+})
+document.querySelectorAll('.number').forEach(number => {
+    number.addEventListener('keypress', e => {
+        const digitFormat = /[0-9]+/;
+        if (!digitFormat.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+})

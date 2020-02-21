@@ -45,7 +45,12 @@ input{
     width: 100%;
     border: none;
     height: 1.4rem;
+    color: #cfefc2;
 }
+
+.form__progress progress::-ms-fill {
+    border-color: currentColor;
+  }
 
 .form__progress progress[value]{
     background-color:#F3F3F3;

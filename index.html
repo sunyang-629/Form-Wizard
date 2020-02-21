@@ -31,16 +31,17 @@
                         <input class="field" type="email" id="email-input" name="email" placeholder="Email *" required><br>
                     </div>
                     <div id="phone" class="input">
-                        <input class="field" type="tel" id='phone-input' name="phone" placeholder="Phone(eg:0712345678)"><br>
+                        <input class="field number" type="tel" id='phone-input' name="phone" placeholder="Phone(eg:0712345678)"><br>
                     </div>
                 </fieldset>
-                <button class="btn--next" type="button" onclick="handlePage(1)">Next</button>  
+                <button class="btn--next" type="button" onclick="handlePage(1)">Next</button>
+                <!-- <button id="btn-next" class="btn--next" type="button" >Next</button> -->
             </div>
             <div class="form--stage " id="stepTwo">
                 <h2>Personal Details Part-2</h2>
                 <fieldset>
                     <div id="street-number" class="input">
-                        <input class="field" type="text" id="streetNumber-input" name="street-number" placeholder="Street number *" required><br>
+                        <input class="field number" type="text" id="streetNumber-input" name="street-number" placeholder="Street number *" required><br>
                     </div>
                     <div class="input">
                         <div id="street-name">
@@ -60,7 +61,7 @@
                         <input class="field" type="text" id="suburb-input" name="suburb" placeholder="Suburb *" required><br>
                     </div>
                     <div id="postcode" class="input">
-                       <input class="field" type="text" id="postcode-input" name="postcode" placeholder="Postcode *" required><br> 
+                       <input class="field number" type="text" id="postcode-input" name="postcode" placeholder="Postcode *" required><br> 
                     </div>
                 </fieldset>
                 <button class="btn--prev" type="button" onclick="handlePage(-1)">Previous</button>  
