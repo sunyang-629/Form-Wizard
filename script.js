@@ -102,7 +102,7 @@ const writeResults = () => {
 
 const setProgressBar = step => {
     const progress = step / totalSteps;
-    $$('progress').value = progress * 100
+    $$('progress').value = progress * 100 || 2
     $$('progress').innerHTML = progress * 100 + "%"
 }
 

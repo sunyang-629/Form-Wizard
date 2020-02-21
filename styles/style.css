@@ -2,6 +2,8 @@
     font-family: 'PT Sans', sans-serif;
     color: white;
     height: 600px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 input:-webkit-autofill,
@@ -18,6 +20,10 @@ input{
     font-family: 'PT Sans', sans-serif;
 }
 
+.title img {
+    padding-left: 15px;
+}
+
 .form{
     width: 100%;
     background-color: #F3F3F3;
@@ -30,7 +36,6 @@ input{
 .form__progress{
     width: 100%;
     box-shadow: 0 2px 4px 0 #dddbdb;
-    /* background-color: #F3F3F3; */
     line-height: 100%;
     border: none;
     border-bottom:solid 3px #dddbdb;
@@ -39,7 +44,7 @@ input{
 .form__progress progress{
     width: 100%;
     border: none;
-    /* background-color: #F3F3F3; */
+    height: 1.4rem;
 }
 
 .form__progress progress[value]{
