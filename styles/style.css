@@ -89,6 +89,14 @@ input{
     border-color:solid 1px #20619C;
 }
 
+.form__body select {
+    width: 30%;
+    height: 48px;
+    padding-left: 20px;
+    float: right;
+    border:none
+}
+
 .form__body fieldset {
     border: none;
     margin: 0;
@@ -122,4 +130,9 @@ input{
 
 .display{
     display: block;
+}
+
+#streetName{
+    width: 61.8%;
+    float: left;
 }
