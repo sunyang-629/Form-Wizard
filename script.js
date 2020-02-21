@@ -18,9 +18,9 @@ const $ = className => document.getElementsByClassName(className);
 
 const handlePage = n => {
     if (validator()) {
-        $('form--stage')[completedSteps].className = $('form--stage')[completedSteps].className.replace('display', '');
+        $('form--stage')[completedSteps].className = $('form--stage')[completedSteps].className.replace(' display', '');
         completedSteps += n;
-        $('form--stage')[completedSteps].className += 'display';
+        $('form--stage')[completedSteps].className += ' display';
     } else {
         console.log('object');
     }
@@ -33,6 +33,7 @@ const validator = () => {
             return false;
         }
         else if (!checkFormatValid(inputs[i])) {
+            console.log(inputs[i].name);
             return false
         }     
     }
@@ -50,7 +51,11 @@ const checkFormatValid = input => {
         case 'email':
             return checkEmailValid(input.value)
         case 'postcode':
-            return checkPostcodeValid(parseInt(input.value,10))
+            return !isNaN(input.value) && checkPostcodeValid(parseInt(input.value, 10))
+        case 'phone':
+            return checkPhoneValid(input.value)
+        case 'snumber':
+            return !isNaN(input.value) && checkPositiveIntegerValid(parseFloat(input.value))
         default:
             return true;
     }
@@ -65,8 +70,21 @@ const checkPostcodeValid = value => {
     return (value >= 800 && value <= 7999)
 }
 
+const checkPhoneValid = value => {
+    const phoneFormat = /^(\+?\(61\)|\(\+?61\)|\+?61|\(0[23478]\)|0[23478])?( ?-?[0-9]){7,9}$/;
+    return !value || phoneFormat.test(value);
+}
+
+const checkPositiveIntegerValid = value => {
+    console.log(value);
+    return Number.isInteger(value) && value > 0
+}
+
 const results = () => {
+    if (validator()) {
     const firstName = $$('fname').value;
 
     document.write('<h2>First Name: ' + firstName);
+    }
+
 }
